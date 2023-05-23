@@ -10,7 +10,7 @@ def agg_trans_count(state_query):
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # df = pd.read_sql_query(f'SELECT * from agg_trans where agg_trans.state=\'{state_query}\'', engine)
     # pd.options.display.float_format = '{:.2f}'.format
-    df = pd.read_csv(r'C:\MLCourse\Learning\Phonepe\df_agg_trans.csv')
+    df = pd.read_csv(r'df_agg_trans.csv')
     df = df[df['state'] == state_query]
     df_trans_count = df.groupby(['state','transaction_type'])['transaction_count'].sum()
     display_df = pd.DataFrame(df_trans_count)
@@ -24,7 +24,7 @@ def agg_trans_amount(state_query):
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # df = pd.read_sql_query(f'SELECT * from agg_trans where agg_trans.state=\'{state_query}\'', engine)
     # pd.options.display.float_format = '{:.2f}'.format
-    df = pd.read_csv('C:\MLCourse\Learning\Phonepe\df_agg_trans.csv')
+    df = pd.read_csv('df_agg_trans.csv')
     df = df[df['state'] == state_query]
     df_trans_amount = df.groupby(['state','transaction_type'])['transaction_amount'].sum()
     display_df = pd.DataFrame(df_trans_amount)
@@ -39,7 +39,7 @@ def agg_trans_state_year_quarter(state_query,year_query,quarter_query,trans_quer
     #st.write(type(quarter_query))
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # df = pd.read_sql_query(f'select * from agg_trans where agg_trans.state=\'{state_query}\' and agg_trans.year = {year_query} and agg_trans.quarter= {quarter_query} and transaction_type=\'{trans_query}\'',engine);
-    df = pd.read_csv('C:\MLCourse\Learning\Phonepe\df_agg_trans.csv')
+    df = pd.read_csv('df_agg_trans.csv')
     df['year'] =  pd.to_datetime(df['year'], format='%Y')
     df['year'] = df['year'].dt.strftime('%Y')
     df_1 = df[df['state'] == state_query]
@@ -54,7 +54,7 @@ def agg_trans_state_year_count(state_query,year_query):
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # display_df = pd.read_sql_query(f'select * from agg_trans where agg_trans.state=\'{state_query}\' and agg_trans.year = {year_query}',engine);
     # pd.options.display.float_format = '{:.2f}'.format
-    df = pd.read_csv('C:\MLCourse\Learning\Phonepe\df_agg_trans.csv')
+    df = pd.read_csv('df_agg_trans.csv')
     df['year'] =  pd.to_datetime(df['year'], format='%Y')
     df['year'] = df['year'].dt.strftime('%Y')
     df_1 = df[df['state'] == state_query]
@@ -70,7 +70,7 @@ def agg_trans_state_year_amount(state_query,year_query):
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # display_df = pd.read_sql_query(f'select * from agg_trans where agg_trans.state=\'{state_query}\' and agg_trans.year = {year_query}',engine);
     # pd.options.display.float_format = '{:.2f}'.format
-    df = pd.read_csv('C:\MLCourse\Learning\Phonepe\df_agg_trans.csv')
+    df = pd.read_csv('df_agg_trans.csv')
     df['year'] =  pd.to_datetime(df['year'], format='%Y')
     df['year'] = df['year'].dt.strftime('%Y')
     df_1 = df[df['state'] == state_query]
@@ -86,7 +86,7 @@ def agg_trans_state_quarter_count(state_query,quarter_query):
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # display_df = pd.read_sql_query(f'select * from agg_trans where agg_trans.state=\'{state_query}\' and agg_trans.quarter = {quarter_query}',engine);
     # pd.options.display.float_format = '{:.2f}'.format
-    df = pd.read_csv('C:\MLCourse\Learning\Phonepe\df_agg_trans.csv')
+    df = pd.read_csv('df_agg_trans.csv')
     df_1 = df[df['state'] == state_query]
     df_1['quarter'] = df_1['quarter'].map(str)
     df_2 = df_1[df_1['quarter'] == quarter_query]
@@ -101,7 +101,7 @@ def agg_trans_state_quarter_amount(state_query,quarter_query):
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # display_df = pd.read_sql_query(f'select * from agg_trans where agg_trans.state=\'{state_query}\' and agg_trans.quarter = {quarter_query}',engine);
     # pd.options.display.float_format = '{:.2f}'.format
-    df = pd.read_csv('C:\MLCourse\Learning\Phonepe\df_agg_trans.csv')
+    df = pd.read_csv('df_agg_trans.csv')
     df_1 = df[df['state'] == state_query]
     df_1['quarter'] = df_1['quarter'].map(str)
     df_2 = df_1[df_1['quarter'] == quarter_query]
@@ -115,7 +115,7 @@ def agg_trans_state_quarter_amount(state_query,quarter_query):
 def get_top_10_state_count():
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # df = pd.read_sql_query(f'SELECT * from top_trans_dist', engine)
-    df = pd.read_csv(r'C:\MLCourse\Learning\Phonepe\df_top_transaction_district.csv')
+    df = pd.read_csv(r'df_top_transaction_district.csv')
     pd.options.display.float_format = '{:.2f}'.format
     temp = df.groupby(['state'])['count'].sum().sort_values(ascending=False).head(10)
     new_df = pd.DataFrame(temp)
@@ -125,7 +125,7 @@ def get_top_10_state_count():
 def get_top_10_state_amount():
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # df = pd.read_sql_query(f'SELECT * from top_trans_dist', engine)
-    df = pd.read_csv(r'C:\MLCourse\Learning\Phonepe\df_top_transaction_district.csv')
+    df = pd.read_csv(r'df_top_transaction_district.csv')
     pd.options.display.float_format = '{:.2f}'.format
     temp = df.groupby(['state'])['amount'].sum().sort_values(ascending=False).head(10)
     new_df = pd.DataFrame(temp)
@@ -135,7 +135,7 @@ def get_top_10_state_amount():
 def get_top_10_district_count():
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # df = pd.read_sql_query(f'SELECT * from top_trans_dist', engine)
-    df = pd.read_csv(r'C:\MLCourse\Learning\Phonepe\df_top_transaction_district.csv')
+    df = pd.read_csv(r'df_top_transaction_district.csv')
     pd.options.display.float_format = '{:.2f}'.format
     temp = df.groupby(['district'])['count'].sum().sort_values(ascending=False).head(10)
     new_df = pd.DataFrame(temp)
@@ -145,7 +145,7 @@ def get_top_10_district_count():
 def get_top_10_district_amount():
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # df = pd.read_sql_query(f'SELECT * from top_trans_dist', engine)
-    df = pd.read_csv(r'C:\MLCourse\Learning\Phonepe\df_top_transaction_district.csv')
+    df = pd.read_csv(r'df_top_transaction_district.csv')
     pd.options.display.float_format = '{:.2f}'.format
     temp = df.groupby(['district'])['amount'].sum().sort_values(ascending=False).head(10)
     new_df = pd.DataFrame(temp)
@@ -155,7 +155,7 @@ def get_top_10_district_amount():
 def get_top_10_pincode_count():
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # df = pd.read_sql_query(f'SELECT * from top_trans_pincode', engine)
-    df = pd.read_csv('C:\MLCourse\Learning\Phonepe\df_top_transaction_pincode.csv')
+    df = pd.read_csv('df_top_transaction_pincode.csv')
     df = df.dropna()
     df = df.astype({"pincode":'int'}) 
     new_df = df.groupby(['pincode'])['count'].sum().sort_values(ascending=False).head(10) 
@@ -165,7 +165,7 @@ def get_top_10_pincode_count():
 def get_top_10_pincode_amount():
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # df = pd.read_sql_query(f'SELECT * from top_trans_pincode', engine)
-    df = pd.read_csv('C:\MLCourse\Learning\Phonepe\df_top_transaction_pincode.csv')
+    df = pd.read_csv('df_top_transaction_pincode.csv')
     df = df.dropna()
     df = df.astype({"pincode":'int'}) 
     new_df = df.groupby(['pincode'])['amount'].sum().sort_values(ascending=False).head(10) 
@@ -175,7 +175,7 @@ def get_top_10_pincode_amount():
 def get_top_10_district_user():
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # df = pd.read_sql_query(f'SELECT * from top_user_district', engine)
-    df = pd.read_csv('C:\MLCourse\Learning\Phonepe\df_top_user_district.csv')
+    df = pd.read_csv('df_top_user_district.csv')
     new_df = df.groupby(['district'])['registered_users'].sum().sort_values(ascending=False).head(10)
     df_2 = new_df.reset_index()
     return df_2
@@ -183,7 +183,7 @@ def get_top_10_district_user():
 def get_top_10_pincode_user():
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # df = pd.read_sql_query(f'SELECT * from top_user_pincode', engine)
-    df = pd.read_csv('C:\MLCourse\Learning\Phonepe\df_top_user_pincode.csv')
+    df = pd.read_csv('df_top_user_pincode.csv')
     new_df = df.groupby(['pincode'])['registered_users'].sum().sort_values(ascending=False).head(10)
     df_2 = new_df.reset_index()
     return df_2
@@ -191,7 +191,7 @@ def get_top_10_pincode_user():
 def agg_users_state_y_q(state_query,year_query,quarter_query):
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # df = pd.read_sql_query(f'SELECT * from agg_users where agg_users.state=\'{state_query}\' and agg_users.year = {year_query} and agg_users.quarter={quarter_query}', engine)
-    df = pd.read_csv('C:\MLCourse\Learning\Phonepe\df_agg_users.csv')
+    df = pd.read_csv('df_agg_users.csv')
     df['year'] =  pd.to_datetime(df['year'], format='%Y')
     df['year'] = df['year'].dt.strftime('%Y')
     df_1 = df[df['state'] == state_query]
@@ -206,7 +206,7 @@ def agg_users_state_y_q(state_query,year_query,quarter_query):
 
 
 def agg_users_reg_user(state_query,year_query,quarter_query):
-    df = pd.read_csv('C:\MLCourse\Learning\Phonepe\df_agg_users.csv')
+    df = pd.read_csv('df_agg_users.csv')
     df['year'] =  pd.to_datetime(df['year'], format='%Y')
     df['year'] = df['year'].dt.strftime('%Y')
     df_1 = df[df['state'] == state_query]
@@ -221,7 +221,7 @@ def agg_users_reg_user(state_query,year_query,quarter_query):
 def get_map_users():
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # df_2 = pd.read_sql_query(f'SELECT * from map_users', engine)
-    df_2 = pd.read_csv('C:\MLCourse\Learning\Phonepe\df_map_users.csv')
+    df_2 = pd.read_csv('df_map_users.csv')
     df_3 = df_2.groupby(['state'])['users'].sum()
     new_df = df_3.reset_index()
     new_df['new_state'] = 0
@@ -306,7 +306,7 @@ def get_map_users():
 def get_map_trans():
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # df_2 = pd.read_sql_query(f'SELECT * from map_trans', engine)
-    df_2 = pd.read_csv('C:\MLCourse\Learning\Phonepe\df_map_transaction.csv')
+    df_2 = pd.read_csv('df_map_transaction.csv')
     df_3 = df_2.groupby(['state'])['amount'].sum()
     new_df = df_3.reset_index()
     new_df['new_state'] = 0
@@ -390,7 +390,7 @@ def get_map_trans():
 def agg_trans_count_amount():
     # engine = create_engine('postgresql+psycopg2://postgres:Postgres123$@localhost/phonepe_db')
     # display_df = pd.read_sql_query(f'select * from agg_trans',engine)
-    display_df = pd.read_csv('C:\MLCourse\Learning\Phonepe\df_agg_trans.csv')
+    display_df = pd.read_csv('df_agg_trans.csv')
     dummy = display_df.groupby(['year'])['transaction_count','transaction_amount'].sum()
     new_df = dummy.reset_index()
     return new_df
