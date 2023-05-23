@@ -1,10 +1,8 @@
 import streamlit as st
 import pandas as pd
-from sqlalchemy import create_engine
 import json
 import os
 import pandas as pd
-import psycopg2
 import plotly.express as px
 
     
