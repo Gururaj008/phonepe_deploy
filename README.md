@@ -25,3 +25,5 @@ Deployment: • Ensured the solution is secure, efficient, and user-friendly. Te
 The code is written in python , database used is PostgreSQL and UI is developed using streamlit.
 
 Packages used in the project: Pandas, Json, Streamlit, Plotly, Psycopg, Sqlalchemy
+
+Hosted online at :https://gururaj008-phonepe-deploy-p-s-ycgqnz.streamlit.app/
